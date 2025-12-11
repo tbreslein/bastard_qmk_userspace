@@ -71,7 +71,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_DEL,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_EQL,
+       KC_DEL,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TAB,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_TILD,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
@@ -79,8 +79,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                     KC_SPC, KC_ESC, KC_TAB,     KC_ENT, KC_BSPC,
-                                             KP_PT, CW_TOGG,     FUNCS
+                                     KC_SPC, KP_PT, KC_EQL,       FUNCS, KC_BSPC,
+                                            KC_ESC, CW_TOGG,     KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -88,14 +88,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______, _______, _______, _______, _______, KC_END,     _______, _______, _______, _______, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       S_D_MOD, DPI_MOD, KC_BTN3, KC_BTN1, KC_BTN2, KC_HOME,    KC_PLUS,    KC_7,    KC_8,    KC_9, KC_PERC, _______,
+       S_D_MOD, DPI_MOD, _______, DRGSCRL, SNIPING, KC_HOME,    KC_PLUS,    KC_7,    KC_8,    KC_9, KC_PERC, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        SNP_TOG, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, KC_PGUP,    KC_EQL,     KC_4,    KC_5,    KC_6, KC_ASTR, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-     S_D_RMOD, DPI_RMOD, _______, DRGSCRL, SNIPING, KC_PGDN,    KC_MINS,    KC_1,    KC_2,    KC_3, KC_SLSH, _______,
+     S_D_RMOD, DPI_RMOD, KC_BTN3, KC_BTN1, KC_BTN2, KC_PGDN,    KC_MINS,    KC_1,    KC_2,    KC_3, KC_SLSH, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, _______,    _______, _______,
-                                           _______, _______,    KC_0
+                                  _______, _______, _______,    _______,    KC_0,
+                                           _______, _______,    _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -124,8 +124,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BTN1,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_SPC, KC_TILD, KC_LALT,     KC_ENT, KC_BSPC,
-                                           KC_DEL,  KC_MINS,     FUNCS
+                                   KC_SPC, KC_TILD, KC_LALT,      FUNCS, KC_BSPC,
+                                           KC_DEL,  KC_MINS,     KC_ENT
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_LALT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                    KC_SPC, KC_TILD, KC_BTN3,     KC_ENT, KC_BSPC,
-                                           KC_BTN1, KC_BTN2,     FUNCS
+                                           KC_BTN2, KC_BTN1,     FUNCS
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
