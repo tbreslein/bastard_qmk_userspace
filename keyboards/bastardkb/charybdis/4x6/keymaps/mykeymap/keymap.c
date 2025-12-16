@@ -46,9 +46,8 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define DF_BASE DF(LAYER_BASE)
-#define DF_GAMING DF(LAYER_GAMING)
-#define DF_GAMING_PT DF(LAYER_GAMING_POINTER)
+#define TG_GAMING TG(LAYER_GAMING)
+#define TG_GAMING_PT TG(LAYER_GAMING_POINTER)
 
 #define KP_PT MO(LAYER_KEYPAD_POINTER)
 #define FUNCS MO(LAYER_FUNCS)
@@ -106,11 +105,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
          KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,      KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-  DF_GAMING_PT, KC_CAPS, CW_TOGG, KC_HOME, KC_PGUP, _______,    KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR, _______,
+  TG_GAMING_PT, KC_CAPS, CW_TOGG, KC_HOME, KC_PGUP, _______,    KC_BRIU, KC_MPRV, KC_MPLY, KC_MNXT, KC_PSCR, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-     DF_GAMING, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
+     TG_GAMING, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       DF_BASE, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
+       _______, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, _______, _______,    _______, _______,
                                            _______, _______,    _______
