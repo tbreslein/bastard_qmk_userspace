@@ -46,7 +46,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define TG_ENTHIUM TG(LAYER_ENTHIUM)
 #define TG_GAMING TG(LAYER_GAMING)
 #define TG_GAMING_PT TG(LAYER_GAMING_POINTER)
 
@@ -110,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
      TG_GAMING, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-    TG_ENTHIUM, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
+       _______, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                    _______, KC_DEL, _______,    _______, _______,
                                            _______, _______,    _______
