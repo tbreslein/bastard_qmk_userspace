@@ -22,6 +22,7 @@
 
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
+    LAYER_ENTHIUM,
     LAYER_KEYPAD_POINTER,
     LAYER_FUNCS,
     LAYER_GAMING,
@@ -46,6 +47,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
+#define TG_ENTHIUM TG(LAYER_ENTHIUM)
 #define TG_GAMING TG(LAYER_GAMING)
 #define TG_GAMING_PT TG(LAYER_GAMING_POINTER)
 
@@ -86,6 +88,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
+  [LAYER_ENTHIUM] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+        KC_ESC, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_GRV,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+        KC_TAB,    KC_Q,    KC_Y,    KC_O,    KC_U,  KC_EQL,       KC_X,    KC_L,    KC_D,    KC_W,    KC_Z, KC_BSLS,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+KC_B,GUI_T(KC_C),ALT_T(KC_I),SFT_T(KC_A),CTL_T(KC_E),KC_MINS,  KC_K,CTL_T(KC_H),SFT_T(KC_T),ALT_T(KC_N),GUI_T(KC_S),KC_F,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       KC_LBRC, KC_QUOT, KC_COMM,  KC_DOT, KC_SCLN, KC_SLSH,       KC_J,    KC_M,    KC_G,    KC_P,    KC_V, KC_RBRC,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                   KC_SPC, KC_BSPC,   KP_PT,     KC_ENT, LT(FUNCS, KC_R),
+                                           KC_BTN1, KC_BTN2,     DRGSCRL
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
   [LAYER_KEYPAD_POINTER] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
@@ -109,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
      TG_GAMING, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
+    TG_ENTHIUM, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                    _______, KC_DEL, _______,    _______, _______,
                                            _______, _______,    _______
