@@ -46,10 +46,11 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define TG_GAMING TG(LAYER_GAMING)
-#define TG_GAMING_PT TG(LAYER_GAMING_POINTER)
+#define TG_BASE DF(LAYER_BASE)
+#define TG_GAMING DF(LAYER_GAMING)
+#define TG_GAMING_PT DF(LAYER_GAMING_POINTER)
 
-#define KP_PT MO(LAYER_KEYPAD_POINTER)
+#define KP_PT LT(LAYER_KEYPAD_POINTER, KC_BTN3)
 #define FUNCS MO(LAYER_FUNCS)
 
 #define HM_A GUI_T(KC_A)
@@ -82,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                    KC_SPC, KC_BSPC,   KP_PT,     KC_EQL, LT(FUNCS, KC_ENT),
-                                           KC_BTN1, KC_BTN2,     DRGSCRL
+                                           KC_BTN2, KC_BTN1,     DRGSCRL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -109,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
      TG_GAMING, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
+       TG_BASE, _______, _______, KC_END,  KC_PGDN, _______,    KC_BRID, KC_VOLD, KC_MUTE, KC_VOLU, _______, _______,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                    _______, KC_DEL, _______,    _______, _______,
                                            _______, _______,    _______
@@ -141,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_LALT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_SPC, KC_BSPC, KC_BTN3,     KC_EQL, LT(FUNCS, KC_ENT),
+                                   KC_SPC, KC_BSPC, KC_BTN3,     LGUI_T(KC_EQL), LT(FUNCS, KC_ENT),
                                            KC_BTN2, KC_BTN1,     KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
