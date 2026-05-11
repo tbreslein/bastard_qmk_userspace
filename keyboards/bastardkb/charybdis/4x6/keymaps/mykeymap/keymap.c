@@ -30,7 +30,7 @@ enum charybdis_keymap_layers {
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200
 
 /** \brief Automatically enable sniping-mode on the pointer layer. */
-#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_KEYPAD_POINTER
+#define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_POINTER_FUNCS
 
 #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 static uint16_t auto_pointer_layer_timer = 0;
@@ -48,8 +48,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define TG_GAMING DF(LAYER_GAMING)
 
 #define KP_PT_ESC LT(LAYER_POINTER_FUNCS, KC_ESC)
-#define KP_FUNCS_ENT LT(LAYER_FUNCS, KC_ENT)
-#define FUNCS MO(LAYER_FUNCS)
 
 #define HM_A LGUI_T(KC_A)
 #define HM_S LALT_T(KC_S)
@@ -287,11 +285,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_TAB,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, HM_QUOT,
+       KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, TD_COMM,  KC_DOT, KC_SLSH, KC_BTN1,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                             KC_SPC, KC_LSFT, RAG_T(KC_DEL),     KP_FUNCS_ENT, KC_LSFT,
+                             KC_SPC, KC_LSFT, RAG_T(KC_DEL),     RCTL_T(KC_ENT), KC_LSFT,
                               RCG_T(KC_BSPC),     KP_PT_ESC,     GUI_T(KC_EQL)
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
@@ -365,7 +363,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD || abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
         if (auto_pointer_layer_timer == 0) {
-            layer_on(LAYER_POINTER);
+            layer_on(LAYER_POINTER_FUNCS);
 #        ifdef RGB_MATRIX_ENABLE
             rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
@@ -379,7 +377,7 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
 void matrix_scan_user(void) {
     if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(), auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
         auto_pointer_layer_timer = 0;
-        layer_off(LAYER_POINTER);
+        layer_off(LAYER_POINTER_FUNCS);
 #        ifdef RGB_MATRIX_ENABLE
         rgb_matrix_mode_noeeprom(RGB_MATRIX_DEFAULT_MODE);
 #        endif // RGB_MATRIX_ENABLE
