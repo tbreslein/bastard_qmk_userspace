@@ -73,7 +73,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #define HM_MINS LSFT_T(KC_MINS)
 #define HM_QUOT LSFT_T(KC_QUOT)
 #define HM_LBRC HYPR_T(KC_MINS)
-#define HM_RBRC MT(MOD_LTCL | MOD_LALT | MOD_LGUI, KC_RBRC)
+#define HM_RBRC MT(MOD_LCTL | MOD_LALT | MOD_LGUI, KC_RBRC)
 #define CG_T(kc) MT(MOD_LCTL | MOD_LGUI, kc)
 #define AG_T(kc) MT(MOD_LALT | MOD_LGUI, kc)
 /* #define HM_MINS LSFT_T(KC_MINS) */
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_BRID, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, MS_WHLU,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_F13,  KC_F14,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_PRSC, _______, KC_BTN4, DRGSCRL, KC_BTN5, MS_WHLD,    KC_HOME, KC_PGDN, KC_PGDN,  KC_END,  KC_F15,  KC_F16,
+       KC_PSRC, _______, KC_BTN4, DRGSCRL, KC_BTN5, MS_WHLD,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_F15,  KC_F16,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, KC_LSFT, _______,    _______,  _______,
                                            _______, _______,    _______
