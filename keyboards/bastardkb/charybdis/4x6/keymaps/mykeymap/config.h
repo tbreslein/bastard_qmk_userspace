@@ -31,6 +31,10 @@
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM 150
 
+// leader key
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
+
 /* Charybdis-specific features. */
 
 #ifdef POINTING_DEVICE_ENABLE
