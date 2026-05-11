@@ -258,6 +258,14 @@ void leader_end_user(void) {
     }
 }
 
+#ifndef RCG_T
+#    define RCG_T(kc) MT(MOD_LCTL | MOD_RGUI, kc)
+#endif
+
+#ifndef RAG_T
+#    define RAG_T(kc) MT(MOD_LALT | MOD_RGUI, kc)
+#endif
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
