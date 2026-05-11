@@ -65,7 +65,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HM_SCLN GUI_T(KC_SCLN)
 
 #define HM_MINS ALT_T(KC_MINS)
-#define HM_LBRC CLT_T(KC_LBRC)
+#define HM_LBRC CTL_T(KC_LBRC)
 #define HM_QUOT ALT_T(KC_QUOT)
 #define HM_RBRC CTL_T(KC_RBRC)
 
