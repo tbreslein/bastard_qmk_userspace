@@ -69,8 +69,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HM_QUOT ALT_T(KC_QUOT)
 #define HM_RBRC CTL_T(KC_RBRC)
 
-#define OS_COMM OSL(LAYER_SYMBOLS)
-
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
@@ -177,7 +175,7 @@ void leader_end_user(void) {
         tap_code16(KC_LT);
         tap_code16(KC_EQL);
     } else if (leader_sequence_two_keys(KC_F, KC_G)) {
-        tap_code16(KC_AMP);
+        tap_code16(KC_AMPR);
         tap_code16(KC_EQL);
     } else if (leader_sequence_two_keys(KC_F, KC_B)) {
         tap_code16(KC_PIPE);
@@ -256,7 +254,7 @@ void leader_end_user(void) {
         // misc
         // leader / -> string("tommy.breslein@protonmail.com")
     } else if (leader_sequence_one_key(KC_SLSH)) {
-        SEND_STRING("tommy.breslein@protonmail.com")
+        SEND_STRING("tommy.breslein@protonmail.com");
     }
 }
 
