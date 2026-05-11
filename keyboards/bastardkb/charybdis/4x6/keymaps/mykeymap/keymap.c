@@ -23,10 +23,7 @@
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_GAMING,
-    LAYER_SYMBOLS,
     LAYER_POINTER_FUNCS,
-    /* LAYER_KEYPAD_POINTER, */
-    /* LAYER_FUNCS, */
 };
 
 #define CHARYBDIS_MINIMUM_DEFAULT_DPI 800
@@ -64,9 +61,7 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define HM_L LALT_T(KC_L)
 #define HM_SCLN RGUI_T(KC_SCLN)
 
-#define HM_MINS LCTL_T(KC_MINS)
 #define HM_LBRC LALT_T(KC_LBRC)
-#define HM_QUOT RCTL_T(KC_QUOT)
 #define HM_RBRC LALT_T(KC_RBRC)
 
 #ifndef POINTING_DEVICE_ENABLE
@@ -265,6 +260,9 @@ void leader_end_user(void) {
 #ifndef RAG_T
 #    define RAG_T(kc) MT(MOD_LALT | MOD_RGUI, kc)
 #endif
+#define RCG_BSPC MT(MOD_LCTL | MOD_RGUI, KC_BSPC)
+
+#define RAG_DEL MT(MOD_LCTL | MOD_RGUI, KC_DEL)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -274,12 +272,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       HM_MINS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, HM_QUOT,
+       KC_MINS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        HM_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, TD_COMM,  KC_DOT, KC_SLSH, HM_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                             KC_SPC, KC_LSFT, RAG_T(KC_DEL),     KP_FUNCS_ENT, KC_LSFT,
-                              RCG_T(KC_BSPC),     KP_PT_ESC,     GUI_T(KC_EQL)
+                                 KC_SPC, KC_LSFT,   RAG_DEL,     RCTL_T(KC_ENT), KC_LSFT,
+                                        RCG_BSPC, KP_PT_ESC,     GUI_T(KC_EQL)
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
