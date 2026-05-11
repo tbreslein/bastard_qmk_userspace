@@ -87,159 +87,159 @@ void leader_end_user(void) {
     } else if (leader_sequence_two_keys(KC_K, KC_B)) {
         set_single_default_layer(LAYER_BASE);
 
-        // [J]ukebox:
-        //   j/k/l : volume controls
-        //   u/i/o : media controls
-    } else if (leader_sequence_two_keys(KC_J, KC_I)) {
-        tap_code16(KC_MPLY);
-    } else if (leader_sequence_two_keys(KC_J, KC_O)) {
-        tap_code16(KC_MNXT);
-    } else if (leader_sequence_two_keys(KC_J, KC_U)) {
-        tap_code16(KC_MPRV);
-    } else if (leader_sequence_two_keys(KC_J, KC_K)) {
-        tap_code16(KC_MUTE);
-    } else if (leader_sequence_two_keys(KC_J, KC_L)) {
-        tap_code16(KC_VOLU);
-    } else if (leader_sequence_two_keys(KC_J, KC_J)) {
-        tap_code16(KC_VOLD);
+        /*     // [J]ukebox: */
+        /*     //   j/k/l : volume controls */
+        /*     //   u/i/o : media controls */
+        /* } else if (leader_sequence_two_keys(KC_J, KC_I)) { */
+        /*     tap_code16(KC_MPLY); */
+        /* } else if (leader_sequence_two_keys(KC_J, KC_O)) { */
+        /*     tap_code16(KC_MNXT); */
+        /* } else if (leader_sequence_two_keys(KC_J, KC_U)) { */
+        /*     tap_code16(KC_MPRV); */
+        /* } else if (leader_sequence_two_keys(KC_J, KC_K)) { */
+        /*     tap_code16(KC_MUTE); */
+        /* } else if (leader_sequence_two_keys(KC_J, KC_L)) { */
+        /*     tap_code16(KC_VOLU); */
+        /* } else if (leader_sequence_two_keys(KC_J, KC_J)) { */
+        /*     tap_code16(KC_VOLD); */
 
-        // [Y]ank screen
-    } else if (leader_sequence_one_key(KC_Y)) {
-        tap_code16(KC_PSCR);
+        /*     // [Y]ank screen */
+        /* } else if (leader_sequence_one_key(KC_Y)) { */
+        /*     tap_code16(KC_PSCR); */
 
-        // [U] caps word... up?
-    } else if (leader_sequence_one_key(KC_U)) {
-        tap_code16(CW_TOGG);
+        /*     // [U] caps word... up? */
+        /* } else if (leader_sequence_one_key(KC_U)) { */
+        /*     tap_code16(CW_TOGG); */
 
-        // [I] caps ... and there's no mnemonic lol
-    } else if (leader_sequence_one_key(KC_I)) {
-        tap_code16(KC_CAPS);
+        /*     // [I] caps ... and there's no mnemonic lol */
+        /* } else if (leader_sequence_one_key(KC_I)) { */
+        /*     tap_code16(KC_CAPS); */
 
-        // Equal sequences(these map similarly to my regular leader symbols):
-        //  leader m -> = (because it's easy to input)
-        //  leader f m -> ==
-        //  leader f d -> +=
-        //  leader f s -> -=
-        //  leader f a -> *=
-        //  leader f c -> !=
-        //  leader f x -> %=
-        //  leader f z -> ^=
-        //  leader f w -> <=
-        //  leader f e -> >=
-        //  leader f g -> &=
-        //  leader f b -> |=
-        //  leader f f g -> &&=
-        //  leader f f b -> ||=
-    } else if (leader_sequence_one_key(KC_M)) {
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_M)) {
-        tap_code16(KC_EQL);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_D)) {
-        tap_code16(KC_PLUS);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_S)) {
-        tap_code16(KC_MINS);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_A)) {
-        tap_code16(KC_ASTR);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_C)) {
-        tap_code16(KC_EXLM);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_X)) {
-        tap_code16(KC_PERC);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_Z)) {
-        tap_code16(KC_CIRC);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_E)) {
-        tap_code16(KC_GT);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_W)) {
-        tap_code16(KC_LT);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_G)) {
-        tap_code16(KC_AMPR);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_two_keys(KC_F, KC_B)) {
-        tap_code16(KC_PIPE);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_three_keys(KC_F, KC_F, KC_G)) {
-        tap_code16(KC_AMPR);
-        tap_code16(KC_AMPR);
-        tap_code16(KC_EQL);
-    } else if (leader_sequence_three_keys(KC_F, KC_F, KC_B)) {
-        tap_code16(KC_PIPE);
-        tap_code16(KC_PIPE);
-        tap_code16(KC_EQL);
+        /*     // Equal sequences(these map similarly to my regular leader symbols): */
+        /*     //  leader m -> = (because it's easy to input) */
+        /*     //  leader f m -> == */
+        /*     //  leader f d -> += */
+        /*     //  leader f s -> -= */
+        /*     //  leader f a -> *= */
+        /*     //  leader f c -> != */
+        /*     //  leader f x -> %= */
+        /*     //  leader f z -> ^= */
+        /*     //  leader f w -> <= */
+        /*     //  leader f e -> >= */
+        /*     //  leader f g -> &= */
+        /*     //  leader f b -> |= */
+        /*     //  leader f f g -> &&= */
+        /*     //  leader f f b -> ||= */
+        /* } else if (leader_sequence_one_key(KC_M)) { */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_M)) { */
+        /*     tap_code16(KC_EQL); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_D)) { */
+        /*     tap_code16(KC_PLUS); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_S)) { */
+        /*     tap_code16(KC_MINS); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_A)) { */
+        /*     tap_code16(KC_ASTR); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_C)) { */
+        /*     tap_code16(KC_EXLM); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_X)) { */
+        /*     tap_code16(KC_PERC); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_Z)) { */
+        /*     tap_code16(KC_CIRC); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_E)) { */
+        /*     tap_code16(KC_GT); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_W)) { */
+        /*     tap_code16(KC_LT); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_G)) { */
+        /*     tap_code16(KC_AMPR); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_two_keys(KC_F, KC_B)) { */
+        /*     tap_code16(KC_PIPE); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_three_keys(KC_F, KC_F, KC_G)) { */
+        /*     tap_code16(KC_AMPR); */
+        /*     tap_code16(KC_AMPR); */
+        /*     tap_code16(KC_EQL); */
+        /* } else if (leader_sequence_three_keys(KC_F, KC_F, KC_B)) { */
+        /*     tap_code16(KC_PIPE); */
+        /*     tap_code16(KC_PIPE); */
+        /*     tap_code16(KC_EQL); */
 
-        // arrow sequences:
-        // leader s f -> ->
-        // leader s d -> <-
-        // leader s r -> =>
-        // leader s e -> <=
-    } else if (leader_sequence_two_keys(KC_S, KC_F)) {
-        tap_code16(KC_MINS);
-        tap_code16(KC_GT);
-    } else if (leader_sequence_two_keys(KC_S, KC_D)) {
-        tap_code16(KC_LT);
-        tap_code16(KC_MINS);
-    } else if (leader_sequence_two_keys(KC_S, KC_R)) {
-        tap_code16(KC_EQL);
-        tap_code16(KC_GT);
-    } else if (leader_sequence_two_keys(KC_S, KC_E)) {
-        tap_code16(KC_LT);
-        tap_code16(KC_EQL);
+        /*     // arrow sequences: */
+        /*     // leader s f -> -> */
+        /*     // leader s d -> <- */
+        /*     // leader s r -> => */
+        /*     // leader s e -> <= */
+        /* } else if (leader_sequence_two_keys(KC_S, KC_F)) { */
+        /*     tap_code16(KC_MINS); */
+        /*     tap_code16(KC_GT); */
+        /* } else if (leader_sequence_two_keys(KC_S, KC_D)) { */
+        /*     tap_code16(KC_LT); */
+        /*     tap_code16(KC_MINS); */
+        /* } else if (leader_sequence_two_keys(KC_S, KC_R)) { */
+        /*     tap_code16(KC_EQL); */
+        /*     tap_code16(KC_GT); */
+        /* } else if (leader_sequence_two_keys(KC_S, KC_E)) { */
+        /*     tap_code16(KC_LT); */
+        /*     tap_code16(KC_EQL); */
 
-        // symbols
-        // leader q -> @
-        // leader w -> #
-        // leader e -> {
-        // leader r -> (
-        // leader 3 -> }
-        // leader 4 -> )
-        // leader a -> *
-        // leader d -> +
-        // leader g -> &
-        // leader z -> ^
-        // leader x -> %
-        // leader c -> !
-        // leader v -> $
-        // leader b -> |
-    } else if (leader_sequence_one_key(KC_Q)) {
-        tap_code16(KC_AT);
-    } else if (leader_sequence_one_key(KC_W)) {
-        tap_code16(KC_HASH);
-    } else if (leader_sequence_one_key(KC_E)) {
-        tap_code16(KC_LCBR);
-    } else if (leader_sequence_one_key(KC_R)) {
-        tap_code16(KC_LPRN);
-    } else if (leader_sequence_one_key(KC_3)) {
-        tap_code16(KC_RCBR);
-    } else if (leader_sequence_one_key(KC_4)) {
-        tap_code16(KC_RPRN);
-    } else if (leader_sequence_one_key(KC_A)) {
-        tap_code16(KC_ASTR);
-    } else if (leader_sequence_one_key(KC_D)) {
-        tap_code16(KC_PLUS);
-    } else if (leader_sequence_one_key(KC_G)) {
-        tap_code16(KC_AMPR);
-    } else if (leader_sequence_one_key(KC_Z)) {
-        tap_code16(KC_CIRC);
-    } else if (leader_sequence_one_key(KC_X)) {
-        tap_code16(KC_PERC);
-    } else if (leader_sequence_one_key(KC_C)) {
-        tap_code16(KC_EXLM);
-    } else if (leader_sequence_one_key(KC_V)) {
-        tap_code16(KC_DLR);
-    } else if (leader_sequence_one_key(KC_B)) {
-        tap_code16(KC_PIPE);
+        /*     // symbols */
+        /*     // leader q -> @ */
+        /*     // leader w -> # */
+        /*     // leader e -> { */
+        /*     // leader r -> ( */
+        /*     // leader 3 -> } */
+        /*     // leader 4 -> ) */
+        /*     // leader a -> * */
+        /*     // leader d -> + */
+        /*     // leader g -> & */
+        /*     // leader z -> ^ */
+        /*     // leader x -> % */
+        /*     // leader c -> ! */
+        /*     // leader v -> $ */
+        /*     // leader b -> | */
+        /* } else if (leader_sequence_one_key(KC_Q)) { */
+        /*     tap_code16(KC_AT); */
+        /* } else if (leader_sequence_one_key(KC_W)) { */
+        /*     tap_code16(KC_HASH); */
+        /* } else if (leader_sequence_one_key(KC_E)) { */
+        /*     tap_code16(KC_LCBR); */
+        /* } else if (leader_sequence_one_key(KC_R)) { */
+        /*     tap_code16(KC_LPRN); */
+        /* } else if (leader_sequence_one_key(KC_3)) { */
+        /*     tap_code16(KC_RCBR); */
+        /* } else if (leader_sequence_one_key(KC_4)) { */
+        /*     tap_code16(KC_RPRN); */
+        /* } else if (leader_sequence_one_key(KC_A)) { */
+        /*     tap_code16(KC_ASTR); */
+        /* } else if (leader_sequence_one_key(KC_D)) { */
+        /*     tap_code16(KC_PLUS); */
+        /* } else if (leader_sequence_one_key(KC_G)) { */
+        /*     tap_code16(KC_AMPR); */
+        /* } else if (leader_sequence_one_key(KC_Z)) { */
+        /*     tap_code16(KC_CIRC); */
+        /* } else if (leader_sequence_one_key(KC_X)) { */
+        /*     tap_code16(KC_PERC); */
+        /* } else if (leader_sequence_one_key(KC_C)) { */
+        /*     tap_code16(KC_EXLM); */
+        /* } else if (leader_sequence_one_key(KC_V)) { */
+        /*     tap_code16(KC_DLR); */
+        /* } else if (leader_sequence_one_key(KC_B)) { */
+        /*     tap_code16(KC_PIPE); */
 
-        // misc
-        // leader / -> string("tommy.breslein@protonmail.com")
-    } else if (leader_sequence_one_key(KC_SLSH)) {
-        SEND_STRING("tommy.breslein@protonmail.com");
+        /*     // misc */
+        /*     // leader / -> string("tommy.breslein@protonmail.com") */
+        /* } else if (leader_sequence_one_key(KC_SLSH)) { */
+        /*     SEND_STRING("tommy.breslein@protonmail.com"); */
     }
 }
 
