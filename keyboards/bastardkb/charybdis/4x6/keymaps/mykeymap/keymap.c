@@ -69,18 +69,10 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-// >>> TAP DANCE
-// I use comma double tap to output just a single comma, and to and to activate
-// as my leader key otherwise
-enum { TD_LEAD_COMM };
-tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for LEADER, twice for Comma
-    [TD_LEAD_COMM] = ACTION_TAP_DANCE_DOUBLE(QK_LEAD, KC_COMM),
-};
-#define TD_COMM
-
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_SPC)) {
+    if (leader_sequence_one_key(QK_LEAD)) {
+        tap_code16(KC_COMM);
+    } else if (leader_sequence_one_key(KC_SPC)) {
         tap_code16(KC_COMM);
         tap_code16(KC_SPC);
     } else if (leader_sequence_one_key(KC_ENT)) {
@@ -251,15 +243,7 @@ void leader_end_user(void) {
     }
 }
 
-#ifndef RCG_T
-#    define RCG_T(kc) MT(MOD_LCTL | MOD_RGUI, kc)
-#endif
-
-#ifndef RAG_T
-#    define RAG_T(kc) MT(MOD_LALT | MOD_RGUI, kc)
-#endif
 #define RCG_BSPC MT(MOD_LCTL | MOD_RGUI, KC_BSPC)
-
 #define RAG_DEL MT(MOD_LCTL | MOD_RGUI, KC_DEL)
 
 // clang-format off
