@@ -33,7 +33,7 @@
 
 // leader key
 #define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 250
+#define LEADER_TIMEOUT 120
 
 /* Charybdis-specific features. */
 
