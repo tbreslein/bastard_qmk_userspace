@@ -54,20 +54,20 @@ static uint16_t auto_pointer_layer_timer = 0;
 #define KP_FUNCS_ENT LT(LAYER_FUNCS, KC_ENT)
 #define FUNCS MO(LAYER_FUNCS)
 
-#define HM_A GUI_T(KC_A)
-#define HM_S ALT_T(KC_S)
-#define HM_D SFT_T(KC_D)
-#define HM_F CTL_T(KC_F)
+#define HM_A LGUI_T(KC_A)
+#define HM_S LALT_T(KC_S)
+#define HM_D LSFT_T(KC_D)
+#define HM_F LCTL_T(KC_F)
 
-#define HM_J CTL_T(KC_J)
-#define HM_K SFT_T(KC_K)
-#define HM_L ALT_T(KC_L)
-#define HM_SCLN GUI_T(KC_SCLN)
+#define HM_J RCTL_T(KC_J)
+#define HM_K RSFT_T(KC_K)
+#define HM_L LALT_T(KC_L)
+#define HM_SCLN RGUI_T(KC_SCLN)
 
-#define HM_MINS ALT_T(KC_MINS)
-#define HM_LBRC CTL_T(KC_LBRC)
-#define HM_QUOT ALT_T(KC_QUOT)
-#define HM_RBRC CTL_T(KC_RBRC)
+#define HM_MINS LCTL_T(KC_MINS)
+#define HM_LBRC LALT_T(KC_LBRC)
+#define HM_QUOT RCTL_T(KC_QUOT)
+#define HM_RBRC LALT_T(KC_RBRC)
 
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
