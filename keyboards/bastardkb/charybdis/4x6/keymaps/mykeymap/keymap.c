@@ -23,6 +23,7 @@
 enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_GAMING,
+    LAYER_SYMBOLS,
     LAYER_POINTER_FUNCS,
 };
 
@@ -44,24 +45,6 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    endif // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
 #endif     // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define TG_BASE DF(LAYER_BASE)
-#define TG_GAMING DF(LAYER_GAMING)
-
-#define KP_PT_ESC LT(LAYER_POINTER_FUNCS, KC_ESC)
-
-#define HM_A LGUI_T(KC_A)
-#define HM_S LALT_T(KC_S)
-#define HM_D LSFT_T(KC_D)
-#define HM_F LCTL_T(KC_F)
-
-#define HM_J RCTL_T(KC_J)
-#define HM_K RSFT_T(KC_K)
-#define HM_L LALT_T(KC_L)
-#define HM_SCLN RGUI_T(KC_SCLN)
-
-#define HM_LBRC LALT_T(KC_LBRC)
-#define HM_RBRC LALT_T(KC_RBRC)
-
 #ifndef POINTING_DEVICE_ENABLE
 #    define DRGSCRL KC_NO
 #    define DPI_MOD KC_NO
@@ -69,182 +52,32 @@ static uint16_t auto_pointer_layer_timer = 0;
 #    define SNIPING KC_NO
 #endif // !POINTING_DEVICE_ENABLE
 
-void leader_end_user(void) {
-    if (leader_sequence_one_key(QK_LEAD)) {
-        tap_code16(KC_COMM);
-    } else if (leader_sequence_one_key(KC_SPC)) {
-        tap_code16(KC_COMM);
-        tap_code16(KC_SPC);
-    } else if (leader_sequence_one_key(KC_ENT)) {
-        tap_code16(KC_COMM);
-        tap_code16(KC_ENT);
-
-        // [K]ukebox:
-        //   leader k g -> gaming
-        //   leader k b -> base
-    } else if (leader_sequence_two_keys(KC_K, KC_G)) {
-        set_single_default_layer(LAYER_GAMING);
-    } else if (leader_sequence_two_keys(KC_K, KC_B)) {
-        set_single_default_layer(LAYER_BASE);
-
-        /*     // [J]ukebox: */
-        /*     //   j/k/l : volume controls */
-        /*     //   u/i/o : media controls */
-        /* } else if (leader_sequence_two_keys(KC_J, KC_I)) { */
-        /*     tap_code16(KC_MPLY); */
-        /* } else if (leader_sequence_two_keys(KC_J, KC_O)) { */
-        /*     tap_code16(KC_MNXT); */
-        /* } else if (leader_sequence_two_keys(KC_J, KC_U)) { */
-        /*     tap_code16(KC_MPRV); */
-        /* } else if (leader_sequence_two_keys(KC_J, KC_K)) { */
-        /*     tap_code16(KC_MUTE); */
-        /* } else if (leader_sequence_two_keys(KC_J, KC_L)) { */
-        /*     tap_code16(KC_VOLU); */
-        /* } else if (leader_sequence_two_keys(KC_J, KC_J)) { */
-        /*     tap_code16(KC_VOLD); */
-
-        /*     // [Y]ank screen */
-        /* } else if (leader_sequence_one_key(KC_Y)) { */
-        /*     tap_code16(KC_PSCR); */
-
-        /*     // [U] caps word... up? */
-        /* } else if (leader_sequence_one_key(KC_U)) { */
-        /*     tap_code16(CW_TOGG); */
-
-        /*     // [I] caps ... and there's no mnemonic lol */
-        /* } else if (leader_sequence_one_key(KC_I)) { */
-        /*     tap_code16(KC_CAPS); */
-
-        /*     // Equal sequences(these map similarly to my regular leader symbols): */
-        /*     //  leader m -> = (because it's easy to input) */
-        /*     //  leader f m -> == */
-        /*     //  leader f d -> += */
-        /*     //  leader f s -> -= */
-        /*     //  leader f a -> *= */
-        /*     //  leader f c -> != */
-        /*     //  leader f x -> %= */
-        /*     //  leader f z -> ^= */
-        /*     //  leader f w -> <= */
-        /*     //  leader f e -> >= */
-        /*     //  leader f g -> &= */
-        /*     //  leader f b -> |= */
-        /*     //  leader f f g -> &&= */
-        /*     //  leader f f b -> ||= */
-        /* } else if (leader_sequence_one_key(KC_M)) { */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_M)) { */
-        /*     tap_code16(KC_EQL); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_D)) { */
-        /*     tap_code16(KC_PLUS); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_S)) { */
-        /*     tap_code16(KC_MINS); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_A)) { */
-        /*     tap_code16(KC_ASTR); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_C)) { */
-        /*     tap_code16(KC_EXLM); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_X)) { */
-        /*     tap_code16(KC_PERC); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_Z)) { */
-        /*     tap_code16(KC_CIRC); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_E)) { */
-        /*     tap_code16(KC_GT); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_W)) { */
-        /*     tap_code16(KC_LT); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_G)) { */
-        /*     tap_code16(KC_AMPR); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_two_keys(KC_F, KC_B)) { */
-        /*     tap_code16(KC_PIPE); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_three_keys(KC_F, KC_F, KC_G)) { */
-        /*     tap_code16(KC_AMPR); */
-        /*     tap_code16(KC_AMPR); */
-        /*     tap_code16(KC_EQL); */
-        /* } else if (leader_sequence_three_keys(KC_F, KC_F, KC_B)) { */
-        /*     tap_code16(KC_PIPE); */
-        /*     tap_code16(KC_PIPE); */
-        /*     tap_code16(KC_EQL); */
-
-        /*     // arrow sequences: */
-        /*     // leader s f -> -> */
-        /*     // leader s d -> <- */
-        /*     // leader s r -> => */
-        /*     // leader s e -> <= */
-        /* } else if (leader_sequence_two_keys(KC_S, KC_F)) { */
-        /*     tap_code16(KC_MINS); */
-        /*     tap_code16(KC_GT); */
-        /* } else if (leader_sequence_two_keys(KC_S, KC_D)) { */
-        /*     tap_code16(KC_LT); */
-        /*     tap_code16(KC_MINS); */
-        /* } else if (leader_sequence_two_keys(KC_S, KC_R)) { */
-        /*     tap_code16(KC_EQL); */
-        /*     tap_code16(KC_GT); */
-        /* } else if (leader_sequence_two_keys(KC_S, KC_E)) { */
-        /*     tap_code16(KC_LT); */
-        /*     tap_code16(KC_EQL); */
-
-        /*     // symbols */
-        /*     // leader q -> @ */
-        /*     // leader w -> # */
-        /*     // leader e -> { */
-        /*     // leader r -> ( */
-        /*     // leader 3 -> } */
-        /*     // leader 4 -> ) */
-        /*     // leader a -> * */
-        /*     // leader d -> + */
-        /*     // leader g -> & */
-        /*     // leader z -> ^ */
-        /*     // leader x -> % */
-        /*     // leader c -> ! */
-        /*     // leader v -> $ */
-        /*     // leader b -> | */
-        /* } else if (leader_sequence_one_key(KC_Q)) { */
-        /*     tap_code16(KC_AT); */
-        /* } else if (leader_sequence_one_key(KC_W)) { */
-        /*     tap_code16(KC_HASH); */
-        /* } else if (leader_sequence_one_key(KC_E)) { */
-        /*     tap_code16(KC_LCBR); */
-        /* } else if (leader_sequence_one_key(KC_R)) { */
-        /*     tap_code16(KC_LPRN); */
-        /* } else if (leader_sequence_one_key(KC_3)) { */
-        /*     tap_code16(KC_RCBR); */
-        /* } else if (leader_sequence_one_key(KC_4)) { */
-        /*     tap_code16(KC_RPRN); */
-        /* } else if (leader_sequence_one_key(KC_A)) { */
-        /*     tap_code16(KC_ASTR); */
-        /* } else if (leader_sequence_one_key(KC_D)) { */
-        /*     tap_code16(KC_PLUS); */
-        /* } else if (leader_sequence_one_key(KC_G)) { */
-        /*     tap_code16(KC_AMPR); */
-        /* } else if (leader_sequence_one_key(KC_Z)) { */
-        /*     tap_code16(KC_CIRC); */
-        /* } else if (leader_sequence_one_key(KC_X)) { */
-        /*     tap_code16(KC_PERC); */
-        /* } else if (leader_sequence_one_key(KC_C)) { */
-        /*     tap_code16(KC_EXLM); */
-        /* } else if (leader_sequence_one_key(KC_V)) { */
-        /*     tap_code16(KC_DLR); */
-        /* } else if (leader_sequence_one_key(KC_B)) { */
-        /*     tap_code16(KC_PIPE); */
-
-        /*     // misc */
-        /*     // leader / -> string("tommy.breslein@protonmail.com") */
-        /* } else if (leader_sequence_one_key(KC_SLSH)) { */
-        /*     SEND_STRING("tommy.breslein@protonmail.com"); */
+enum custom_keycodes {
+    MC_MAIL = SAFE_RANGE,
+};
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MC_MAIL:
+            if (record->event.pressed) {
+                SEND_STRING("tommy.breslein@protonmail.com");
+            }
+            break;
     }
-}
-
-#define RCG_BSPC MT(MOD_LCTL | MOD_RGUI, KC_BSPC)
-#define RAG_DEL MT(MOD_LCTL | MOD_RGUI, KC_DEL)
+    return true;
+};
+#define KP_PT_ESC LT(LAYER_POINTER_FUNCS, KC_ESC)
+#define KP_SYM_ENT LT(LAYER_SYMBOLS, KC_ENT)
+#define TG_BASE DF(LAYER_BASE)
+#define TG_GAMING DF(LAYER_GAMING)
+#define KP_PT_ESC LT(LAYER_POINTER_FUNCS, KC_ESC)
+#define HM_MINS LSFT_T(KC_MINS)
+#define HM_QUOT LSFT_T(KC_QUOT)
+#define HM_LBRC HYPR_T(KC_MINS)
+#define HM_RBRC MT(MOD_LTCL | MOD_LALT | MOD_LGUI, KC_RBRC)
+#define CG_T(kc) MT(MOD_LCTL | MOD_LGUI, kc)
+#define AG_T(kc) MT(MOD_LALT | MOD_LGUI, kc)
+/* #define HM_MINS LSFT_T(KC_MINS) */
+/* #define HM_QUOT RSFT_T(KC_QUOT) */
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -254,12 +87,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_MINS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+       HM_MINS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, HM_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       HM_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, QK_LEAD,  KC_DOT, KC_SLSH, HM_RBRC,
+       HM_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, HM_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                 KC_SPC, KC_LSFT,   RAG_DEL,     RCTL_T(KC_ENT), KC_LSFT,
-                                        RCG_BSPC, KP_PT_ESC,     GUI_T(KC_EQL)
+                     LALT_T(KC_SPC), KC_LCTL, CG_T(KC_BSPC),     KP_SYM_ENT, C(KC_LALT),
+                                    KP_PT_ESC, AG_T(KC_DEL),     KC_RGUI
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -269,26 +102,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_TAB,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, HM_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, QK_LEAD,  KC_DOT, KC_SLSH, KC_BTN1,
+       KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BTN1,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                 KC_SPC, KC_LSFT,   RAG_DEL,     RCTL_T(KC_ENT), KC_LSFT,
-                                        RCG_BSPC, KP_PT_ESC,     GUI_T(KC_EQL)
+                                   KC_SPC, KC_LCTL, KC_BSPC,     KP_SYM_ENT, C(KC_LALT),
+                                          KP_PT_ESC, KC_DEL,     KC_RGUI
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_POINTER_FUNCS] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______, _______, _______, _______, _______, _______,    _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4, _______,
+       KC_VOLD, KC_MUTE, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_BTN5,    _______,   KC_F5,   KC_F6,   KC_F7,   KC_F8, _______,
+       KC_BRIU, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_BTN5,      KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, MS_WHLU,    KC_HOME,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_PGUP,
+       KC_BRID, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, MS_WHLU,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_F13,  KC_F14,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, _______, KC_BTN4, DRGSCRL, KC_BTN5, MS_WHLD,    KC_END,   KC_F13,  KC_F14,  KC_F15,  KC_F16, KC_PGDN,
+       KC_PRSC, _______, KC_BTN4, DRGSCRL, KC_BTN5, MS_WHLD,    KC_HOME, KC_PGDN, KC_PGDN,  KC_END,  KC_F15,  KC_F16,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  _______, _______, KC_LSFT,    KC_DEL,  _______,
+                                  _______, KC_LSFT, _______,    _______,  _______,
+                                           _______, _______,    _______
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+                                 ),
+
+  [LAYER_SYMBOLS] = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, TG_GAMING,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______,   KC_AT, KC_HASH, KC_LPRN, KC_RCBR, KC_LBRC,    KC_RBRC, KC_RPRN, KC_RCBR, _______, _______, TG_BASE,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, KC_ASTR, KC_MINS, KC_PLUS,  KC_EQL, KC_AMPR,    KC_CAPS, CW_TOGG,   KC_LT,   KC_GT, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, KC_CIRC, KC_PERC, KC_EXLM,  KC_DLR, KC_PIPE,    _______, MC_MAIL, _______, _______, _______, _______,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  KC_SPC,  _______, _______,    _______,  _______,
                                            _______, _______,    _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
