@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        HM_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, HM_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                     LALT_T(KC_SPC), KC_LCTL, CG_T(KC_BSPC),     KP_SYM_ENT, C(KC_LALT),
+                     LALT_T(KC_SPC), KC_LCTL, CG_T(KC_BSPC),     KP_SYM_ENT, KC_LSFT,
                                     KP_PT_ESC, AG_T(KC_DEL),     KC_RGUI
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
@@ -106,20 +106,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BTN1,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_SPC, KC_LCTL, KC_BSPC,     KP_SYM_ENT, C(KC_LALT),
+                                   KC_SPC, KC_LCTL, KC_BSPC,     KP_SYM_ENT, KC_LSFT,
                                           KP_PT_ESC, KC_DEL,     KC_RGUI
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_POINTER_FUNCS] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       KC_VOLD, KC_MUTE, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
+       _______, _______, _______, _______, _______, _______,      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_BRIU, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_BTN5,      KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
+       _______, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, KC_BTN5,      KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_BRID, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, MS_WHLU,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_F13,  KC_F14,
+       _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, MS_WHLU,    KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,  KC_F13,  KC_F14,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_PSCR, _______, KC_BTN4, DRGSCRL, KC_BTN5, MS_WHLD,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_F15,  KC_F16,
+       _______, _______, KC_BTN4, DRGSCRL, KC_BTN5, MS_WHLD,    KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_F15,  KC_F16,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, KC_LSFT, _______,    _______,  _______,
                                            _______, _______,    _______
@@ -128,13 +128,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [LAYER_SYMBOLS] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, TG_GAMING,
+       _______, _______, _______, _______, _______, _______,    MC_MAIL, _______, _______, _______, _______, TG_GAMING,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______,   KC_AT, KC_HASH, KC_LPRN, KC_RCBR, KC_LBRC,    KC_RBRC, KC_RPRN, KC_RCBR, _______, _______, TG_BASE,
+       _______,   KC_AT, KC_HASH, KC_LPRN, KC_RCBR, KC_LBRC,    KC_RBRC, KC_RPRN, KC_RCBR, _______, KC_PSCR, TG_BASE,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, KC_ASTR, KC_MINS, KC_PLUS,  KC_EQL, KC_AMPR,    KC_CAPS, CW_TOGG,   KC_LT,   KC_GT, _______, _______,
+       _______, KC_ASTR, KC_MINS, KC_PLUS,  KC_EQL, KC_AMPR,    KC_CAPS, CW_TOGG,   KC_LT,   KC_GT, KC_BRID, KC_BRIU,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, KC_CIRC, KC_PERC, KC_EXLM,  KC_DLR, KC_PIPE,    _______, MC_MAIL, _______, _______, _______, _______,
+       _______, KC_CIRC, KC_PERC, KC_EXLM,  KC_DLR, KC_PIPE,    KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLD, KC_MUTE, KC_VOLU,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   KC_SPC,  _______, _______,    _______,  _______,
                                            _______, _______,    _______
