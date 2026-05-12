@@ -27,9 +27,9 @@
 #endif // __arm__
 
 // homerow mods
-#define TAPPING_TERM 180
+#define TAPPING_TERM 170
 #define PERMISSIVE_HOLD
-#define QUICK_TAP_TERM 150
+#define QUICK_TAP_TERM 145
 
 /* Charybdis-specific features. */
 
