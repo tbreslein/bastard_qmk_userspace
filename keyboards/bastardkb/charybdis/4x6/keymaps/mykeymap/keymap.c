@@ -90,8 +90,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                    KC_SPC, KC_BSPC, KC_ESC,     MT(LAYER_SYMBOLS), KC_ENT,
-                           MT(LAYER_POINTER_FUNCS), DRGSCRL,     KC_DEL
+                                    KC_SPC, KC_BSPC, KC_ESC,     MO(LAYER_SYMBOLS), KC_ENT,
+                           MO(LAYER_POINTER_FUNCS), DRGSCRL,     KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -105,8 +105,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                    KC_SPC, KC_BSPC, KC_ESC,     MT(LAYER_SYMBOLS), KC_ENT,
-                           MT(LAYER_POINTER_FUNCS), KC_RCTL,     KC_DEL
+                                    KC_SPC, KC_BSPC, KC_ESC,     MO(LAYER_SYMBOLS), KC_ENT,
+                           MO(LAYER_POINTER_FUNCS), KC_RCTL,     KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
