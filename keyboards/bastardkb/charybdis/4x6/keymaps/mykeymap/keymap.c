@@ -24,6 +24,7 @@ enum charybdis_keymap_layers {
     LAYER_BASE = 0,
     LAYER_GAMING,
     LAYER_SYMBOLS,
+    LAYER_KEYPAD,
     LAYER_POINTER_FUNCS,
 };
 
@@ -55,16 +56,43 @@ static uint16_t auto_pointer_layer_timer = 0;
 enum custom_keycodes {
     MC_MAIL = SAFE_RANGE,
 };
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    uint8_t mods = get_mods();
     switch (keycode) {
         case MC_MAIL:
             if (record->event.pressed) {
                 SEND_STRING("tommy.breslein@protonmail.com");
             }
             break;
+
+        case KC_ESC:
+            if (record->event.pressed) {
+                // Handle Shift + ESC for backtick
+                if ((mods & MOD_MASK_SHIFT) && !(mods & ~MOD_MASK_SHIFT)) {
+                    unregister_mods(MOD_MASK_SHIFT);
+                    tap_code(KC_GRV);
+                    register_mods(mods);
+                    return false;
+                }
+                // Handle Alt + ESC for tilde
+                if ((mods & MOD_MASK_ALT) && !(mods & ~MOD_MASK_ALT)) {
+                    unregister_mods(MOD_MASK_ALT);
+                    tap_code16(S(KC_GRV)); // Send Shift + GRV for tilde
+                    register_mods(mods);
+                    return false;
+                }
+                // Handle GUI(CMD) + ESC for window switching
+                if ((mods & MOD_MASK_GUI) && !(mods & ~MOD_MASK_GUI)) {
+                    tap_code16(G(KC_GRV)); // Send CMD + ` for window switching
+                    return false;
+                }
+            }
+            break;
     }
     return true;
 };
+
 #define KP_PT_ESC LT(LAYER_POINTER_FUNCS, KC_ESC)
 #define KP_SYM_ENT LT(LAYER_SYMBOLS, KC_ENT)
 #define TG_BASE DF(LAYER_BASE)
@@ -82,31 +110,46 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-     S(KC_TAB),    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV,
+         KC_AT, KC_PERC, KC_ASTR, KC_PLUS,  KC_EQL, KC_EXLM,    KC_AMPR, KC_CIRC,  KC_DLR, KC_LPRN, KC_RPRN, KC_HASH,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
+        KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_MINS,    HM_A,    HM_S,    HM_D,    HM_F,    KC_G,       KC_H,    HM_J,    HM_K,    HM_L, HM_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                    KC_SPC, KC_BSPC, KC_ESC,     MO(LAYER_SYMBOLS), KC_ENT,
-                           MO(LAYER_POINTER_FUNCS), DRGSCRL,     KC_DEL
+                          KC_SPC, KC_BSPC, MO(LAYER_KEYPAD),    KC_TAB, KC_ENT,
+                           MO(LAYER_POINTER_FUNCS), DRGSCRL,    KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
   [LAYER_GAMING] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-     S(KC_TAB),    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV,
+       KC_MINS,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_GRV,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_TAB,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
+        KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    HM_J,    HM_K,    HM_L, HM_SCLN, KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RBRC,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                    KC_SPC, KC_BSPC, KC_ESC,     MO(LAYER_SYMBOLS), KC_ENT,
-                           MO(LAYER_POINTER_FUNCS), KC_RCTL,     KC_DEL
+                                    KC_SPC, KC_BSPC, KC_TAB,    KC_TAB, KC_ENT,
+                           MO(LAYER_POINTER_FUNCS), KC_RCTL,    KC_DEL
+  //                            ╰───────────────────────────╯ ╰──────────────────╯
+  ),
+
+  [LAYER_KEYPAD = LAYOUT(
+  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
+       _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, _______, _______, _______, _______, _______,    _______,    KC_7,    KC_8,    KC_9, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, _______, _______, _______, _______, _______,    _______,    KC_4,    KC_5,    KC_6, _______, _______,
+  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
+       _______, _______, _______, _______, _______, _______,    _______,    KC_1,    KC_2,    KC_3, _______, _______,
+  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
+                                  _______, _______, _______,    _______,    KC_0,
+                                           _______, _______,    _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -121,21 +164,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_BTN5, KC_BTN4, KC_BTN3, KC_BTN2, KC_BTN1, DRGSCRL,    KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLD, KC_MUTE, KC_VOLU,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   _______, KC_LSFT, _______,    _______,  _______,
-                                           _______, _______,    _______
-  //                            ╰───────────────────────────╯ ╰──────────────────╯
-  ),
-
-  [LAYER_SYMBOLS] = LAYOUT(
-  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-       _______, _______, _______, _______, _______, _______,    MC_MAIL, _______, _______, _______, _______, _______,
-  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______,   KC_AT, KC_HASH, KC_LPRN, KC_LCBR, KC_LBRC,    KC_RBRC, KC_RPRN, KC_RCBR, _______, _______, _______,
-  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, KC_ASTR, KC_MINS, KC_PLUS,  KC_EQL, KC_AMPR,    _______, _______,   KC_LT,   KC_GT, _______, _______,
-  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       _______, KC_CIRC, KC_PERC, KC_EXLM,  KC_DLR, KC_PIPE,    _______, _______, _______, _______, _______, _______,
-  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                  KC_SPC,  _______, _______,    _______,  _______,
                                            _______, _______,    _______
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
